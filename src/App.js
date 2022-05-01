@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
+import { ReactComponent as ClientAudiophile } from './icons/client-audiophile.svg';
+
+const theme = {
+  breakpoints: {
+    mobile: '375px',
+    desktop: '1440px',
+  },
+  fonts: {
+    primary: "'Epilogue', sans-serif",
+  },
+  colors: {
+    almostWhite: '#fafafa',
+    mediumGray: '#696969',
+    almostBlack: '#141414',
+  },
+};
+
+const Div = styled.div`
+  height: 20vh;
+  background-color: ${(props) => (props.theme.breakpoints.mobile ? 'red' : 'yellow')};
+  font-family: ${(props) => props.theme.fonts.primary};
+  font-weight: 500;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Div>some text!!</Div>
+      <ClientAudiophile />
+    </ThemeProvider>
   );
 }
 
